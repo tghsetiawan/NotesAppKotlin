@@ -6,11 +6,20 @@
         <entry key="..\:/2_Teguh/Belajar/Kotlin/NotesAppKotlin/app/src/main/res/drawable/background.xml" value="0.328" />
         <entry key="..\:/2_Teguh/Belajar/Kotlin/NotesAppKotlin/app/src/main/res/drawable/ic_image.xml" value="0.328" />
         <entry key="..\:/2_Teguh/Belajar/Kotlin/NotesAppKotlin/app/src/main/res/drawable/ic_link.xml" value="0.328" />
+        <entry key="..\:/2_Teguh/Belajar/Kotlin/NotesAppKotlin/app/src/main/res/drawable/ic_more_horiz.xml" value="0.328" />
         <entry key="..\:/2_Teguh/Belajar/Kotlin/NotesAppKotlin/app/src/main/res/drawable/ic_search.xml" value="0.328" />
         <entry key="..\:/2_Teguh/Belajar/Kotlin/NotesAppKotlin/app/src/main/res/drawable/ic_tick.xml" value="0.328" />
+        <entry key="..\:/2_Teguh/Belajar/Kotlin/NotesAppKotlin/app/src/main/res/drawable/notes_color_1.xml" value="0.328" />
+        <entry key="..\:/2_Teguh/Belajar/Kotlin/NotesAppKotlin/app/src/main/res/drawable/notes_color_2.xml" value="0.328" />
+        <entry key="..\:/2_Teguh/Belajar/Kotlin/NotesAppKotlin/app/src/main/res/drawable/notes_color_3.xml" value="0.328" />
+        <entry key="..\:/2_Teguh/Belajar/Kotlin/NotesAppKotlin/app/src/main/res/drawable/notes_color_4.xml" value="0.328" />
+        <entry key="..\:/2_Teguh/Belajar/Kotlin/NotesAppKotlin/app/src/main/res/drawable/notes_color_5.xml" value="0.328" />
+        <entry key="..\:/2_Teguh/Belajar/Kotlin/NotesAppKotlin/app/src/main/res/drawable/notes_color_6.xml" value="0.328" />
+        <entry key="..\:/2_Teguh/Belajar/Kotlin/NotesAppKotlin/app/src/main/res/drawable/notes_color_7.xml" value="0.328" />
         <entry key="..\:/2_Teguh/Belajar/Kotlin/NotesAppKotlin/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/2_Teguh/Belajar/Kotlin/NotesAppKotlin/app/src/main/res/layout/fragment_create_note.xml" value="0.35989583333333336" />
         <entry key="..\:/2_Teguh/Belajar/Kotlin/NotesAppKotlin/app/src/main/res/layout/fragment_home.xml" value="0.33" />
+        <entry key="..\:/2_Teguh/Belajar/Kotlin/NotesAppKotlin/app/src/main/res/layout/fragment_notes_bottom_sheet.xml" value="0.35989583333333336" />
         <entry key="..\:/2_Teguh/Belajar/Kotlin/NotesAppKotlin/app/src/main/res/layout/item_rv_notes.xml" value="0.33" />
       </map>
     </option>

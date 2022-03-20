@@ -9,13 +9,23 @@
 <!--    <color name="white">#FFFFFFFF</color>-->
 
     <color name="colorPrimary">#FF363E50</color>
-    <color name="colorPrimaryDark">#10141c</color>
-    <color name="colorAccent">#EFA549</color>
+    <color name="colorPrimaryDark">#FF10141c</color>
+    <color name="colorAccent">#FFEFA549</color>
     <color name="colorWhite">#FFFFFFFF</color>
-    <color name="colorGray">#C5BDBD</color>
-    <color name="colorLightBlack">#FF363E50</color>
-    <color name="colorText">#7583A3</color>
-    <color name="colorDarkBlack">#10141c</color>
-    <color name="colorYellow">#ffd633</color>
-    <color name="colorBlue">#4e33ff</color>
+    <color name="colorGray">#FFC5BDBD</color>
+    <color name="colorLightBlack">#363E50</color>
+    <color name="colorText">#DBDDE0</color>
+    <color name="colorDarkBlack">#FF10141c</color>
+    <color name="colorYellow">#FFffd633</color>
+    <color name="colorBlue">#FF3968F3</color>
+
+<!--    Color Notes-->
+    <color name="colorDefaultNote">#FF7583A3</color>
+    <color name="colorBlueNote">#FF118AE6</color>
+    <color name="colorYellowNote">#FFEAD141</color>
+    <color name="colorOrangeNote">#FFF18933</color>
+    <color name="colorPurpleNote">#FF9648F4</color>
+    <color name="colorGreenNote">#FF3EBF13</color>
+    <color name="colorBlackNote">#FF202734</color>
+    <color name="colorWhiteNote">#FFffffff</color>
 </resources>

@@ -22,7 +22,7 @@ class HomeFragment : BaseFragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = FragmentHomeBinding.inflate(inflater)
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -50,7 +50,7 @@ class HomeFragment : BaseFragment() {
         }
 
         binding.fabCreateNote.setOnClickListener {
-            replaceFragment(CreateNoteFragment.newInstance(), true)
+            replaceFragment(CreateNoteFragment.newInstance(), false)
         }
     }
 
@@ -63,6 +63,6 @@ class HomeFragment : BaseFragment() {
 
 //        fragmentTransition.replace(R.id.frame_layout, fragment).addToBackStack(fragment.javaClass.simpleName)
 
-        fragmentTransition!!.replace(R.id.frame_layout, fragment).commitAllowingStateLoss()
+        fragmentTransition!!.replace(R.id.frame_layout, fragment).addToBackStack(fragment.javaClass.simpleName).commitAllowingStateLoss()
     }
 }

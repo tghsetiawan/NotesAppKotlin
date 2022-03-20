@@ -1,5 +1,6 @@
 package com.teguh.notesappkotlin.adapter
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,6 +27,25 @@ class NotesAdapter(private val arrList: List<Notes>) : RecyclerView.Adapter<Note
         holder.noteTitle.text = arrList[position].title
         holder.dateTime.text = arrList[position].dateTime
         holder.noteDesc.text = arrList[position].noteText
+
+//        if(arrList[position].color != null){
+//            holder.colorNote.setBackgroundColor(Color.parseColor(arrList[position].color))
+////            holder.colorNote.setBackgroundColor(Color.parseColor("#EAEDED"))
+//        } else if (arrList[position].color.isNullOrEmpty()) {
+//            holder.colorNote.setBackgroundColor(Color.parseColor("#363E50"))
+//        }
+//        else {
+//            holder.colorNote.setBackgroundColor(Color.parseColor("#363E50"))
+//        }
+
+        if (arrList[position].color.isNullOrEmpty()) {
+//            holder.colorNote.setBackgroundColor(Color.parseColor("#363E50"))
+            holder.colorNote.getBackground().setTint(Color.parseColor("#363E50"))
+        }
+        else {
+//            holder.colorNote.setBackgroundColor(Color.parseColor(arrList[position].color))
+            holder.colorNote.getBackground().setTint(Color.parseColor(arrList[position].color))
+        }
     }
 
     override fun getItemCount(): Int {
@@ -36,6 +56,7 @@ class NotesAdapter(private val arrList: List<Notes>) : RecyclerView.Adapter<Note
         val noteTitle = binding.tvTitle
         val dateTime = binding.tvDatetime
         val noteDesc = binding.tvDesc
+        val colorNote = binding.cvNote
     }
 
 //    companion object NotesDiffCallback : DiffUtil.ItemCallback<Notes>(){
