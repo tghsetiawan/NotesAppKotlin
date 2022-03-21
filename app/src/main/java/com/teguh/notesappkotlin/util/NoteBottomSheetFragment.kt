@@ -15,7 +15,7 @@ import com.teguh.notesappkotlin.databinding.FragmentNotesBottomSheetBinding
 
 
 class NoteBottomSheetFragment : BottomSheetDialogFragment (){
-    var selectedColor = "#171c26"
+    var selectedColor = "#363E50"
     private lateinit var binding : FragmentNotesBottomSheetBinding
 
     companion object {
@@ -39,7 +39,7 @@ class NoteBottomSheetFragment : BottomSheetDialogFragment (){
         if(behavior is BottomSheetBehavior<*>){
             behavior.setBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback(){
                 override fun onSlide(bottomSheet: View, slideOffset: Float) {
-                    TODO("Not yet implemented")
+
                 }
 
                 override fun onStateChanged(bottomSheet: View, newState: Int) {
@@ -89,10 +89,10 @@ class NoteBottomSheetFragment : BottomSheetDialogFragment (){
             binding.ivNote7.setImageResource(0)
             selectedColor = "#118AE6"
             val intent = Intent("bottom_sheet_action")
-            intent.putExtra("actionColor", "Blue")
+            intent.putExtra("actionNote", "Blue")
             intent.putExtra("selectedColor", selectedColor)
             LocalBroadcastManager.getInstance(requireContext()).sendBroadcast(intent)
-            dismiss()
+//            dismiss()
         }
         binding.flNote2.setOnClickListener {
             binding.ivNote1.setImageResource(0)
@@ -103,10 +103,10 @@ class NoteBottomSheetFragment : BottomSheetDialogFragment (){
             binding.ivNote7.setImageResource(0)
             selectedColor = "#EAD141"
             val intent = Intent("bottom_sheet_action")
-            intent.putExtra("actionColor", "Yellow")
+            intent.putExtra("actionNote", "Yellow")
             intent.putExtra("selectedColor", selectedColor)
             LocalBroadcastManager.getInstance(requireContext()).sendBroadcast(intent)
-            dismiss()
+//            dismiss()
         }
         binding.flNote3.setOnClickListener {
             binding.ivNote1.setImageResource(0)
@@ -117,10 +117,10 @@ class NoteBottomSheetFragment : BottomSheetDialogFragment (){
             binding.ivNote7.setImageResource(0)
             selectedColor = "#F18933"
             val intent = Intent("bottom_sheet_action")
-            intent.putExtra("actionColor", "Orange")
+            intent.putExtra("actionNote", "Orange")
             intent.putExtra("selectedColor", selectedColor)
             LocalBroadcastManager.getInstance(requireContext()).sendBroadcast(intent)
-            dismiss()
+//            dismiss()
         }
         binding.flNote4.setOnClickListener {
             binding.ivNote1.setImageResource(0)
@@ -131,10 +131,10 @@ class NoteBottomSheetFragment : BottomSheetDialogFragment (){
             binding.ivNote7.setImageResource(0)
             selectedColor = "#3EBF13"
             val intent = Intent("bottom_sheet_action")
-            intent.putExtra("actionColor", "Green")
+            intent.putExtra("actionNote", "Green")
             intent.putExtra("selectedColor", selectedColor)
             LocalBroadcastManager.getInstance(requireContext()).sendBroadcast(intent)
-            dismiss()
+//            dismiss()
         }
         binding.flNote5.setOnClickListener {
             binding.ivNote1.setImageResource(0)
@@ -145,10 +145,10 @@ class NoteBottomSheetFragment : BottomSheetDialogFragment (){
             binding.ivNote7.setImageResource(0)
             selectedColor = "#9648F4"
             val intent = Intent("bottom_sheet_action")
-            intent.putExtra("actionColor", "Purple")
+            intent.putExtra("actionNote", "Purple")
             intent.putExtra("selectedColor", selectedColor)
             LocalBroadcastManager.getInstance(requireContext()).sendBroadcast(intent)
-            dismiss()
+//            dismiss()
         }
         binding.flNote7.setOnClickListener {
             binding.ivNote1.setImageResource(0)
@@ -159,9 +159,19 @@ class NoteBottomSheetFragment : BottomSheetDialogFragment (){
             binding.ivNote7.setImageResource(R.drawable.ic_tick)
             selectedColor = "#202734"
             val intent = Intent("bottom_sheet_action")
-            intent.putExtra("actionColor", "Black")
+            intent.putExtra("actionNote", "Black")
             intent.putExtra("selectedColor", selectedColor)
             LocalBroadcastManager.getInstance(requireContext()).sendBroadcast(intent)
+//            dismiss()
+        }
+
+        binding.llAddImage.setOnClickListener {
+            val intent = Intent("bottom_sheet_action")
+            intent.putExtra("actionNote", "Image")
+            LocalBroadcastManager.getInstance(requireContext()).sendBroadcast(intent)
+        }
+
+        binding.flImgBar.setOnClickListener {
             dismiss()
         }
     }

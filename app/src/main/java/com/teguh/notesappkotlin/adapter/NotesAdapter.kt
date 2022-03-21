@@ -1,5 +1,6 @@
 package com.teguh.notesappkotlin.adapter
 
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
@@ -13,17 +14,11 @@ import com.teguh.notesappkotlin.entities.Notes
 
 class NotesAdapter(private val arrList: List<Notes>) : RecyclerView.Adapter<NotesAdapter.NotesViewHolder>() {
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotesViewHolder {
-//        return NotesViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_rv_notes, parent, false))
         return NotesViewHolder(ItemRvNotesBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holder: NotesViewHolder, position: Int) {
-//        holder.noteTitle.text = getItem(holder.adapterPosition).title
-//        holder.dateTime.text = getItem(holder.adapterPosition).dateTime
-//        holder.noteDesc.text = getItem(holder.adapterPosition).noteText
-
         holder.noteTitle.text = arrList[position].title
         holder.dateTime.text = arrList[position].dateTime
         holder.noteDesc.text = arrList[position].noteText
@@ -39,12 +34,16 @@ class NotesAdapter(private val arrList: List<Notes>) : RecyclerView.Adapter<Note
 //        }
 
         if (arrList[position].color.isNullOrEmpty()) {
-//            holder.colorNote.setBackgroundColor(Color.parseColor("#363E50"))
             holder.colorNote.getBackground().setTint(Color.parseColor("#363E50"))
-        }
-        else {
-//            holder.colorNote.setBackgroundColor(Color.parseColor(arrList[position].color))
+        } else {
             holder.colorNote.getBackground().setTint(Color.parseColor(arrList[position].color))
+        }
+
+        if(arrList[position].imgPath != null){
+            holder.imgNote.setImageBitmap(BitmapFactory.decodeFile(arrList[position].imgPath))
+            holder.imgNote.visibility = View.VISIBLE
+        } else {
+            holder.imgNote.visibility = View.GONE
         }
     }
 
@@ -57,15 +56,6 @@ class NotesAdapter(private val arrList: List<Notes>) : RecyclerView.Adapter<Note
         val dateTime = binding.tvDatetime
         val noteDesc = binding.tvDesc
         val colorNote = binding.cvNote
+        val imgNote = binding.rivImgNote
     }
-
-//    companion object NotesDiffCallback : DiffUtil.ItemCallback<Notes>(){
-//        override fun areItemsTheSame(oldItem: Notes, newItem: Notes): Boolean {
-//            return oldItem.id == newItem.id
-//        }
-//
-//        override fun areContentsTheSame(oldItem: Notes, newItem: Notes): Boolean {
-//            return  oldItem.equals(newItem)
-//        }
-//    }
 }

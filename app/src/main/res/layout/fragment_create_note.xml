@@ -105,6 +105,16 @@
 
         </LinearLayout>
 
+        <ImageView
+            android:id="@+id/iv_note"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_300sdp"
+            android:visibility="gone"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:layout_constraintTop_toBottomOf="@id/ll1" />
+
         <EditText
             android:id="@+id/et_note_description"
             android:layout_width="match_parent"
@@ -120,7 +130,7 @@
             android:fontFamily="@font/manrope3_regular"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ll1" />
+            app:layout_constraintTop_toBottomOf="@+id/iv_note" />
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -134,8 +144,7 @@
                 android:layout_width="@dimen/_24sdp"
                 android:layout_height="@dimen/_24sdp"
                 android:layout_gravity="center"
-                app:tint="@color/colorWhite"
-                android:src="@drawable/ic_more_horiz"/>
+                android:src="@drawable/img_bar"/>
 
         </FrameLayout>
 
