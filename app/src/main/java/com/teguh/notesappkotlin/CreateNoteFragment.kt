@@ -9,8 +9,10 @@ import android.content.IntentFilter
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.net.Uri
+import android.opengl.Visibility
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,6 +35,7 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks, E
     private var READ_STORAGE_PERM = 123
     private var REQUEST_CODE_IMAGE = 456
     private var selectedImagePath = ""
+    private var webLink = ""
     var selectedColor = "#363E50"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -79,13 +82,30 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks, E
         }
 
         binding.ivBack.setOnClickListener {
-//            replaceFragment(HomeFragment.newInstance(), false)
             requireActivity().supportFragmentManager.popBackStack()
         }
 
         binding.ivMore.setOnClickListener {
             var noteBottomSheetFragment = NoteBottomSheetFragment.newInstance()
             noteBottomSheetFragment.show(requireActivity().supportFragmentManager, "Note Bottom Sheet Fragment")
+        }
+
+        binding.btnOke.setOnClickListener {
+            var url = binding.etNoteWebLink.text.toString()
+            if(url.trim().isNotEmpty()){
+                checkWebUrl()
+            } else {
+                Toast.makeText(requireContext(), "Url is Required", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        binding.btnCancel.setOnClickListener {
+            binding.llWebUrl.visibility = View.GONE
+        }
+
+        binding.tvWebLink.setOnClickListener {
+            var intent = Intent(Intent.ACTION_VIEW, Uri.parse(binding.etNoteWebLink.text.toString()))
+            startActivity(intent)
         }
     }
 
@@ -108,29 +128,31 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks, E
                 notes.dateTime = currentDate
                 notes.color = selectedColor
                 notes.imgPath = selectedImagePath
+                notes.webLink = webLink
                 context?.let {
                     NotesDatabase.getDatabase(it).noteDao().insertNotes(notes)
                     binding.etNoteTitle.setText("")
                     binding.etNoteSubTitle.setText("")
                     binding.etNoteDescription.setText("")
                     binding.ivNote.visibility = View.GONE
+                    binding.tvWebLink.visibility = View.GONE
                     requireActivity().supportFragmentManager.popBackStack()
                 }
             }
         }
     }
 
-//    fun replaceFragment(fragment: Fragment, istransition:Boolean){
-//        val fragmentTransition = activity?.supportFragmentManager?.beginTransaction()
-//
-//        if(istransition){
-//            fragmentTransition!!.setCustomAnimations(android.R.anim.slide_out_right, android.R.anim.fade_out, android.R.anim.slide_in_left, android.R.anim.fade_in)
-//        }
-//
-////        fragmentTransition.replace(R.id.frame_layout, fragment).addToBackStack(fragment.javaClass.simpleName)
-//
-//        fragmentTransition!!.replace(R.id.frame_layout, fragment).commitAllowingStateLoss()
-//    }
+    private fun checkWebUrl(){
+        if(Patterns.WEB_URL.matcher(binding.etNoteWebLink.text.toString()).matches()){
+            binding.llWebUrl.visibility = View.GONE
+            binding.etNoteWebLink.isEnabled = false
+            webLink = binding.etNoteWebLink.text.toString()
+            binding.tvWebLink.visibility = View.VISIBLE
+            binding.tvWebLink.text = binding.etNoteWebLink.text.toString()
+        } else {
+            Toast.makeText(requireContext(), "Url is not valid!", Toast.LENGTH_SHORT).show()
+        }
+    }
 
     private val BroadcastReceiver : BroadcastReceiver = object : BroadcastReceiver(){
         override fun onReceive(p0: Context?, p1: Intent?) {
@@ -169,9 +191,16 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks, E
 
                 "Image" -> {
                     readStorageTask()
+                    binding.llWebUrl.visibility = View.GONE
+                }
+
+                "WebUrl" -> {
+                    binding.llWebUrl.visibility = View.VISIBLE
                 }
 
                 else -> {
+                    binding.ivNote.visibility = View.GONE
+                    binding.llWebUrl.visibility = View.GONE
                     selectedColor = p1.getStringExtra("selectedColor")!!
                     binding.viewColor.setBackgroundColor(Color.parseColor(selectedColor))
                 }

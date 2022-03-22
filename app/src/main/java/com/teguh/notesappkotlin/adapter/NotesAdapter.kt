@@ -45,6 +45,13 @@ class NotesAdapter(private val arrList: List<Notes>) : RecyclerView.Adapter<Note
         } else {
             holder.imgNote.visibility = View.GONE
         }
+
+        if(arrList[position].webLink != null){
+            holder.urlWebNote.text = arrList[position].webLink
+            holder.urlWebNote.visibility = View.VISIBLE
+        } else {
+            holder.urlWebNote.visibility = View.GONE
+        }
     }
 
     override fun getItemCount(): Int {
@@ -57,5 +64,6 @@ class NotesAdapter(private val arrList: List<Notes>) : RecyclerView.Adapter<Note
         val noteDesc = binding.tvDesc
         val colorNote = binding.cvNote
         val imgNote = binding.rivImgNote
+        val urlWebNote = binding.tvWebLink
     }
 }

@@ -165,14 +165,22 @@ class NoteBottomSheetFragment : BottomSheetDialogFragment (){
 //            dismiss()
         }
 
+        binding.flImgBar.setOnClickListener {
+            dismiss()
+        }
+
         binding.llAddImage.setOnClickListener {
             val intent = Intent("bottom_sheet_action")
             intent.putExtra("actionNote", "Image")
             LocalBroadcastManager.getInstance(requireContext()).sendBroadcast(intent)
         }
 
-        binding.flImgBar.setOnClickListener {
+        binding.llWebUrl.setOnClickListener {
+            val intent = Intent("bottom_sheet_action")
+            intent.putExtra("actionNote", "WebUrl")
+            LocalBroadcastManager.getInstance(requireContext()).sendBroadcast(intent)
             dismiss()
         }
+
     }
 }
