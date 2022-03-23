@@ -12,10 +12,21 @@ import com.teguh.notesappkotlin.R
 import com.teguh.notesappkotlin.databinding.ItemRvNotesBinding
 import com.teguh.notesappkotlin.entities.Notes
 
-class NotesAdapter(private val arrList: List<Notes>) : RecyclerView.Adapter<NotesAdapter.NotesViewHolder>() {
+class NotesAdapter() : RecyclerView.Adapter<NotesAdapter.NotesViewHolder>() {
+
+    var listener : OnItemClickListener? = null
+    var arrList = ArrayList<Notes>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotesViewHolder {
         return NotesViewHolder(ItemRvNotesBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+    }
+
+    fun setData(arrNoteList: List<Notes>){
+        arrList = arrNoteList as ArrayList<Notes>
+    }
+
+    fun setOnClickListener(listener1:OnItemClickListener){
+        listener = listener1
     }
 
     override fun onBindViewHolder(holder: NotesViewHolder, position: Int) {
@@ -52,6 +63,10 @@ class NotesAdapter(private val arrList: List<Notes>) : RecyclerView.Adapter<Note
         } else {
             holder.urlWebNote.visibility = View.GONE
         }
+
+        holder.cardViewNote.setOnClickListener {
+            listener!!.onClicked(arrList[position].id!!)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -65,5 +80,10 @@ class NotesAdapter(private val arrList: List<Notes>) : RecyclerView.Adapter<Note
         val colorNote = binding.cvNote
         val imgNote = binding.rivImgNote
         val urlWebNote = binding.tvWebLink
+        val cardViewNote = binding.cvNote
+    }
+
+    interface OnItemClickListener{
+        fun onClicked(noteId:Int)
     }
 }

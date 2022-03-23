@@ -36,12 +36,12 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks, E
     private var REQUEST_CODE_IMAGE = 456
     private var selectedImagePath = ""
     private var webLink = ""
+    private var noteId = -1
     var selectedColor = "#363E50"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-        }
+        noteId = requireArguments().getInt("noteId")
     }
 
     override fun onCreateView(
@@ -64,6 +64,32 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks, E
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        if(noteId != -1){
+            launch {
+                context?.let {
+                    var notes = NotesDatabase.getDatabase(it).noteDao().getSpecificNote(noteId)
+                    binding.viewColor.setBackgroundColor(Color.parseColor(notes.color.toString()))
+                    binding.etNoteTitle.setText(notes.title)
+                    binding.tvDatetime.setText(notes.dateTime)
+                    binding.etNoteSubTitle.setText(notes.subTitle)
+                    binding.etNoteDescription.setText(notes.noteText)
+                    if(notes.imgPath != ""){
+                        binding.ivNote.setImageBitmap(BitmapFactory.decodeFile(notes.imgPath))
+                        binding.ivNote.visibility = View.VISIBLE
+                    } else {
+                        binding.ivNote.visibility = View.GONE
+                    }
+
+                    if(notes.webLink != ""){
+                        binding.tvWebLink.text = notes.webLink
+                        binding.tvWebLink.visibility = View.VISIBLE
+                    } else {
+                        binding.tvWebLink.visibility = View.GONE
+                    }
+                }
+            }
+        }
 
         LocalBroadcastManager.getInstance(requireContext()).registerReceiver(
             BroadcastReceiver, IntentFilter("bottom_sheet_action")
