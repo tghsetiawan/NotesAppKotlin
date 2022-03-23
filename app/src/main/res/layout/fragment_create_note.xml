@@ -72,7 +72,7 @@
             app:layout_constraintTop_toBottomOf="@+id/et_note_title" />
 
         <LinearLayout
-            android:id="@+id/ll1"
+            android:id="@+id/layout_sub_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_10sdp"
@@ -105,18 +105,37 @@
 
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/iv_note"
+        <RelativeLayout
+            android:id="@+id/layout_image"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_300sdp"
-            android:visibility="gone"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginEnd="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            app:layout_constraintTop_toBottomOf="@id/ll1" />
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:layout_constraintTop_toBottomOf="@id/layout_sub_title">
+
+            <ImageView
+                android:id="@+id/iv_note"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_300sdp"
+                android:visibility="gone"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp" />
+
+            <ImageView
+                android:id="@+id/iv_delete"
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_24sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:visibility="gone"
+                android:src="@drawable/ic_delete"/>
+
+        </RelativeLayout>
 
         <LinearLayout
-            android:id="@+id/ll_web_url"
+            android:id="@+id/layout_web_url"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -126,15 +145,21 @@
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_note">
+            app:layout_constraintTop_toBottomOf="@+id/layout_image">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
 
             <EditText
                 android:id="@+id/et_note_web_link"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/_10sdp"
                 android:padding="@dimen/_10sdp"
                 android:hint="@string/web_url"
+                android:layout_weight="1"
                 android:text="http://"
                 android:textColor="@color/colorWhite"
                 android:textColorHint="@color/colorGray"
@@ -143,11 +168,21 @@
                 android:textSize="@dimen/_14ssp"
                 android:fontFamily="@font/manrope3_regular" />
 
+            <ImageView
+                android:id="@+id/iv_web_delete"
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_24sdp"
+                android:visibility="gone"
+                android:src="@drawable/ic_cancel"/>
+
+        </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_gravity="end"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:gravity="end">
 
                 <Button
@@ -176,7 +211,6 @@
             </LinearLayout>
         </LinearLayout>
 
-
         <TextView
             android:id="@+id/tv_web_link"
             android:layout_width="match_parent"
@@ -185,6 +219,7 @@
             android:layout_marginEnd="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_5sdp"
             android:padding="@dimen/_10sdp"
+            android:layout_weight="1"
             android:textColor="@color/colorGray"
             android:textColorHint="@color/colorGray"
             android:ellipsize="end"
@@ -194,7 +229,7 @@
             android:fontFamily="@font/manrope3_bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ll_web_url" />
+            app:layout_constraintTop_toBottomOf="@+id/layout_web_url"/>
 
         <EditText
             android:id="@+id/et_note_description"

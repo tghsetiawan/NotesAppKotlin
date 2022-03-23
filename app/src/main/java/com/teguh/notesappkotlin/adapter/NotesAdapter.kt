@@ -57,11 +57,18 @@ class NotesAdapter() : RecyclerView.Adapter<NotesAdapter.NotesViewHolder>() {
             holder.imgNote.visibility = View.GONE
         }
 
-        if(arrList[position].webLink != null){
+//        if(arrList[position].webLink != null){
+//            holder.urlWebNote.text = arrList[position].webLink
+//            holder.urlWebNote.visibility = View.VISIBLE
+//        } else {
+//
+//        }
+
+        if (arrList[position].webLink.isNullOrEmpty()) {
+            holder.urlWebNote.visibility = View.GONE
+        } else {
             holder.urlWebNote.text = arrList[position].webLink
             holder.urlWebNote.visibility = View.VISIBLE
-        } else {
-            holder.urlWebNote.visibility = View.GONE
         }
 
         holder.cardViewNote.setOnClickListener {
