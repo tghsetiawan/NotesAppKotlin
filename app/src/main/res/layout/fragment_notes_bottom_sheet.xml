@@ -13,7 +13,7 @@
         tools:context=".MainActivity">
 
         <FrameLayout
-            android:id="@+id/fl_img_bar"
+            android:id="@+id/layout_image_bar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_30sdp"
             app:layout_constraintStart_toStartOf="parent"
@@ -169,7 +169,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/ll_add_image"
+            android:id="@+id/layout_add_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -207,7 +207,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/ll_web_url"
+            android:id="@+id/layout_web_url"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -233,7 +233,46 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorWhite"
-                android:text="Add Web Link"
+                android:text="@string/add_web_link"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textSize="@dimen/_12ssp"
+                android:fontFamily="@font/manrope3_regular"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_note_title" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_delete_note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:visibility="gone"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:src="@drawable/ic_delete"
+                app:tint="@color/colorWhite" />
+
+            <TextView
+                android:id="@+id/tv_delete_note"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorWhite"
+                android:text="@string/delete_note"
                 android:maxLines="1"
                 android:ellipsize="end"
                 android:textSize="@dimen/_12ssp"
@@ -245,5 +284,4 @@
         </LinearLayout>
 
     </LinearLayout>
-
 </layout>

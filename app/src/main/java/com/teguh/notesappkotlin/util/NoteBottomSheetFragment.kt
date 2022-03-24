@@ -19,10 +19,12 @@ class NoteBottomSheetFragment : BottomSheetDialogFragment (){
     private lateinit var binding : FragmentNotesBottomSheetBinding
 
     companion object {
-        fun newInstance(): NoteBottomSheetFragment{
+        var noteId = -1
+        fun newInstance(id:Int): NoteBottomSheetFragment{
             val args = Bundle()
             val fragment = NoteBottomSheetFragment()
             fragment.arguments = args
+            noteId = id
             return fragment
         }
     }
@@ -76,6 +78,11 @@ class NoteBottomSheetFragment : BottomSheetDialogFragment (){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if(noteId != -1){
+            binding.layoutDeleteNote.visibility = View.VISIBLE
+        } else {
+            binding.layoutDeleteNote.visibility = View.GONE
+        }
         setListener()
     }
 
@@ -165,19 +172,26 @@ class NoteBottomSheetFragment : BottomSheetDialogFragment (){
 //            dismiss()
         }
 
-        binding.flImgBar.setOnClickListener {
+        binding.layoutImageBar.setOnClickListener {
             dismiss()
         }
 
-        binding.llAddImage.setOnClickListener {
+        binding.layoutAddImage.setOnClickListener {
             val intent = Intent("bottom_sheet_action")
             intent.putExtra("actionNote", "Image")
             LocalBroadcastManager.getInstance(requireContext()).sendBroadcast(intent)
         }
 
-        binding.llWebUrl.setOnClickListener {
+        binding.layoutWebUrl.setOnClickListener {
             val intent = Intent("bottom_sheet_action")
             intent.putExtra("actionNote", "WebUrl")
+            LocalBroadcastManager.getInstance(requireContext()).sendBroadcast(intent)
+            dismiss()
+        }
+
+        binding.layoutDeleteNote.setOnClickListener {
+            val intent = Intent("bottom_sheet_action")
+            intent.putExtra("actionNote", "DeleteNote")
             LocalBroadcastManager.getInstance(requireContext()).sendBroadcast(intent)
             dismiss()
         }

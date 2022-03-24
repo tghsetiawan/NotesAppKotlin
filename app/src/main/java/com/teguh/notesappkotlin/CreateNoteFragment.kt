@@ -127,7 +127,7 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks, E
         }
 
         binding.ivMore.setOnClickListener {
-            var noteBottomSheetFragment = NoteBottomSheetFragment.newInstance()
+            var noteBottomSheetFragment = NoteBottomSheetFragment.newInstance(noteId)
             noteBottomSheetFragment.show(requireActivity().supportFragmentManager, "Note Bottom Sheet Fragment")
         }
 
@@ -231,6 +231,15 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks, E
         }
     }
 
+    private fun deleteNote(){
+        launch {
+            context?.let {
+                NotesDatabase.getDatabase(it).noteDao().deleteSpecificNote(noteId)
+                requireActivity().supportFragmentManager.popBackStack()
+            }
+        }
+    }
+
     private fun checkWebUrl(){
         if(Patterns.WEB_URL.matcher(binding.etNoteWebLink.text.toString()).matches()){
             binding.layoutWebUrl.visibility = View.GONE
@@ -285,6 +294,10 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks, E
 
                 "WebUrl" -> {
                     binding.layoutWebUrl.visibility = View.VISIBLE
+                }
+
+                "DeleteNote" -> {
+                    deleteNote()
                 }
 
                 else -> {
