@@ -251,7 +251,7 @@
             android:orientation="horizontal"
             android:background="@color/colorPrimary"
             android:gravity="center"
-            android:visibility="gone"
+            android:visibility="visible"
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_10sdp"

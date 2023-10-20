@@ -63,6 +63,7 @@
             app:layout_constraintTop_toBottomOf="@id/search_view"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            tools:listitem="@layout/item_rv_notes"
             android:id="@+id/reycler_view"/>
 
         <LinearLayout

@@ -65,6 +65,9 @@ class NoteBottomSheetFragment : BottomSheetDialogFragment (){
                             behavior.state = BottomSheetBehavior.STATE_COLLAPSED
                         }
 
+                        BottomSheetBehavior.STATE_HALF_EXPANDED -> {
+                            TODO()
+                        }
                     }
                 }
             })

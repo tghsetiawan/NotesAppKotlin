@@ -127,12 +127,12 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks, E
         }
 
         binding.ivMore.setOnClickListener {
-            var noteBottomSheetFragment = NoteBottomSheetFragment.newInstance(noteId)
+            val noteBottomSheetFragment = NoteBottomSheetFragment.newInstance(noteId)
             noteBottomSheetFragment.show(requireActivity().supportFragmentManager, "Note Bottom Sheet Fragment")
         }
 
         binding.btnOke.setOnClickListener {
-            var url = binding.etNoteWebLink.text.toString()
+            val url = binding.etNoteWebLink.text.toString()
             if(url.trim().isNotEmpty()){
                 checkWebUrl()
             } else {
@@ -333,20 +333,20 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks, E
     }
 
     private fun pickImageFromGallery(){
-        var intent = Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        val intent = Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         if(intent.resolveActivity(requireActivity().packageManager) != null){
             startActivityForResult(intent, REQUEST_CODE_IMAGE)
         }
     }
 
     private fun getPathFromUri(contentUri: Uri): String?{
-        var filePath:String? = null
-        var cursor = requireActivity().contentResolver.query(contentUri, null, null, null,null)
+        var filePath: String?
+        val cursor = requireActivity().contentResolver.query(contentUri, null, null, null,null)
         if(cursor == null){
             filePath = contentUri.path
         } else {
             cursor.moveToFirst()
-            var index = cursor.getColumnIndex("_data")
+            val index = cursor.getColumnIndex("_data")
             filePath = cursor.getString(index)
             cursor.close()
         }

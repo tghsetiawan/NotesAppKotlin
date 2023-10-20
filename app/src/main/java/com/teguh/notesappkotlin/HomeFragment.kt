@@ -81,7 +81,7 @@ class HomeFragment : BaseFragment() {
                 var tempArr = ArrayList<Notes>()
 
                 for (arr in arrNotes){
-                    if(arr.title!!.toLowerCase(Locale.getDefault()).contains(p0.toString())){
+                    if(arr.title!!.lowercase(Locale.getDefault()).contains(p0.toString())){
                         tempArr.add(arr)
                     }
                 }
